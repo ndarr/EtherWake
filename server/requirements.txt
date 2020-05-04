@@ -1,0 +1,4 @@
+flask
+wakeonlan
+flask-cors
+uwsgi
