@@ -1,0 +1,15 @@
+{
+    "background_color": "green",
+    "description": "Control interface to wake up devices in LAN",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "favicon.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      }
+    ],
+    "name": "EtherWake",
+    "short_name": "EtherWake",
+    "start_url": "/etherwake/index.html"
+  }
