@@ -7,37 +7,67 @@
     <script defer src="app.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="icons/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <style>
-      .powerbutton{
-        background-color: green;
-        border: 0px;
-        border-radius: 100%;
-        height:fit-content;
-        width: fit-content;
-        margin: auto;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/modal.css">
   </head>
   <body>
-    <div class="row justify-content-center" style="height: fit-content; text-align: center; margin: auto; font-weight: bolder; text-decoration: underline;"><h1>EtherWake</h1></div>
+    <div class="row justify-content-center" style="height: fit-content; text-align: center; margin: auto; margin-top: 10px; font-weight: bolder; text-decoration: underline;"><h1>EtherWake</h1></div>
     <div class="container" id="app">
+        <div id="show-modal" @click="showModal = true" class="add-button row justify-content-right">
+          <img src="icons/add-icon.png">
+        </div>
         <div class="row justify-content-center" v-for="result in results">
           <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card">
               <div class="card-divider">
-                  <p style="text-align: center; font-weight: bold;">{{ result }}</p>
+                  <p style="text-align: center; font-weight: bold;">{{ result.name }}</p>
               </div>
               <div class="card-section">
-                  <div class="powerbutton" v-on:click="wakeUp(result)">
-                    <img src="power-icon.png">
+                  <div class="powerbutton" @click="wakeUp(result.mac)">
+                    <img src="icons/power-icon.png">
                   </div>
               </div>
               </div>
           </div>
         </div>
+        <div class="footer" >
+
+        </div>
+        <modal :show="showModal" @close="showModal = false"></modal>
     </div>
+
+    <!-- template for the modal component -->
+  <script type="x/template" id="modal-template">
+    <transition name="modal">
+        <div class="modal-mask" v-show="show">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3>New Device</h3>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">
+                        Name
+                        <input class="form-control" v-model="name">
+                    </label>
+                    <label class="form-label">
+                      MAC
+                      <input placeholder="00:00:00:00:00:00" class="form-control" v-model="mac">
+                    </label>
+                  </div>
+                <div class="modal-footer text-right">
+                    <button class="modal-default-button" @click="cancel">
+                        Cancel
+                    </button>
+                    <button class="modal-default-button" @click="savePost">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </transition>
+  </script>
   </body>
 </html>

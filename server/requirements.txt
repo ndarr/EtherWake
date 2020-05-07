@@ -2,3 +2,5 @@ flask
 wakeonlan
 flask-cors
 uwsgi
+peewee
+jsonpickle

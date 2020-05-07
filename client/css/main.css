@@ -1,0 +1,30 @@
+.powerbutton{
+    background-color: #42b983;
+    border: 0px;
+    border-radius: 100%;
+    height:fit-content;
+    width: fit-content;
+    margin: auto;
+  }
+  .add-button{
+    position: fixed;
+    bottom: 15px;
+    right: 30px;
+    background-color: #42b983;
+    border: 0px;
+    border-radius: 100%;
+    height:fit-content;
+    width: fit-content;
+    padding: auto;
+    z-index: 1;
+  }
+  .add-button img{
+    min-width: 32px;
+    max-width: 64px;
+  }
+  
+
+  .footer {
+    min-height: 80px;
+    max-height: 80px;
+  }
